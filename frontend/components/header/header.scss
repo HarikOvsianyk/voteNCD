@@ -1,0 +1,30 @@
+@import '../../assets/css/base';
+
+.header {
+    background-color: $main-color;
+    height: 64px;
+
+    &__title {
+        flex-grow: 1;
+        align-items: center;
+        color: $logo-color;
+        font-family: $logo-font;
+        font-size: $logo-fs;
+        margin: 0;
+    }
+
+    &__button {
+        background-color: $main-color;
+        color: $logo-color;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 1.75;
+        letter-spacing: 0.02857em;
+        text-transform: uppercase;
+        min-width: 64px;
+        padding: 5px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: 1px solid $logo-color;
+    }
+}

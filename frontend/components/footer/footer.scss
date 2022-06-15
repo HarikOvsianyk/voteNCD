@@ -1,0 +1,15 @@
+@import '../../assets//css//base';
+
+.footer {
+    background-color: $main-color;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+        color: $logo-color;
+        font-family: $logo-font;
+        font-size: $logo-fs;
+    }
+}

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Card } from '../../components/card';
+import { Card } from '../../components/card/card';
 import './main.scss';
 
 export const Main: FunctionComponent = () => {
