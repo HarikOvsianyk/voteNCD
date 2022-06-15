@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 // } from "./assets/js/near/utils";
 // import getConfig from "./assets/js/near/config";
 import { Layout } from "./components";
-import "./assets/css/global.scss";
+import "./assets/scss/global.scss";
 import { Routes } from './Routes';
 
 export default function App() {

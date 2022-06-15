@@ -1,4 +1,5 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     login,
     logout,
@@ -9,6 +10,13 @@ import {
 import './signin.scss';
 
 export const SignIn: FunctionComponent = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        if(window.walletConnection.isSignedIn()) {
+            navigate('/main')
+        }
+    }, []);
+    
     return (
         <main className='signin'>
             <h1 className='signin__header'>
