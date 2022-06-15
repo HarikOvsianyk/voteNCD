@@ -1,4 +1,4 @@
-import { Main, SignUp, LawPage } from '../pages';
+import { Main, SignIn, LawPage } from '../pages';
 //   import { CLIENT_PATH } from '@/constants/path';
 //   import { PrivateRoute } from '@/privateRoute/privateRoute';
   
@@ -6,7 +6,7 @@ import { Main, SignUp, LawPage } from '../pages';
     {
       label: 'Home',
       path: '/',
-      element: <SignUp />,
+      element: <SignIn />,
     },
     {
       label: 'Main',
