@@ -42,5 +42,5 @@ export const HeaderBTN = styled(Button)({
     padding: '5px 15px',
     borderRadius: '4px',
     cursor: 'pointer',
-    border: '1px solid colors.white',
+    border: '1px solid #FFFFFF',
 });

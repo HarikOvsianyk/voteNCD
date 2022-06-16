@@ -1,10 +1,9 @@
 import { FunctionComponent } from "react";
 import {
-  Button,
   CardContent,
   Typography,
 } from "@mui/material";
-import { BasicCard, CardTitle, CardName, CardExpDate, WrapperVoices } from "./cardComponents";
+import { BasicCard, CardTitle, CardName, CardExpDate, WrapperVoices, CardBTN } from "./cardComponents";
 import { ICardProps } from "../../interfaces/interfaces";
 
 export const Card: FunctionComponent<ICardProps> = ({
@@ -24,7 +23,7 @@ export const Card: FunctionComponent<ICardProps> = ({
           <Typography>In favor: {inFavor}</Typography>
           <Typography>Against: {against}</Typography>
         </WrapperVoices>
-        <Button>View more</Button>
+        <CardBTN>View more</CardBTN>
       </CardContent>
     </BasicCard>
   );

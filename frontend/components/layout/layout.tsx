@@ -1,17 +1,15 @@
 import { FunctionComponent, ReactNode } from "react";
 import { Footer, Header } from "../index";
-import './layout.scss';
+import { LayoutWrapper, LayoutChildren } from "./layoutComponents";
 
 export const Layout: FunctionComponent<{ children: ReactNode }> = ({
   children,
 }) => {
   return (
-    <div className="layout">
+    <LayoutWrapper>
       <Header />
-      <div className="layout__children">
-      {children}
-      </div>
+      <LayoutChildren>{children}</LayoutChildren>
       <Footer />
-    </div>
+    </LayoutWrapper>
   );
 };

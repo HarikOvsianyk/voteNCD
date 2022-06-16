@@ -1,7 +1,6 @@
 import {
     Box,
     Typography,
-    Button,
   } from "@mui/material";
   import { styled } from '@mui/system';
   import { colors } from '../../constants/colors';
@@ -29,9 +28,10 @@ import {
     padding: '3.5em 0 0.5em',
     textAlign: 'center',
     color: '#00bfb2',
+    fontSize: '30px'
   });
 
-  export const SingInButton = styled(Button)({
+  export const SingInButton = styled('button')({
     backgroundColor: colors.main,
     color: colors.white,
     fontWeight: '500',
@@ -43,4 +43,5 @@ import {
     padding: '5px 15px',
     borderRadius: '4px',
     cursor: 'pointer',
+    border: 'none',
   });

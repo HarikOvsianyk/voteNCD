@@ -5,3 +5,7 @@ export interface ICardProps {
     inFavor: string;
     against: string;
 }
+
+export interface ILawProps extends ICardProps{
+    descriptopn: string;
+}
