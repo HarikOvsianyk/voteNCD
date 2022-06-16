@@ -7,32 +7,35 @@ import {
     set_greeting,
   } from "../../assets/js/near/utils";
   import getConfig from "../../assets/js/near/config";
-import './signin.scss';
+import { SignInWrapper, SignInDescr, SignInTitle, SingInButton } from './signinComponents';
 
 export const SignIn: FunctionComponent = () => {
     const navigate = useNavigate();
     useEffect(() => {
+        console.log(window);
         if(window.walletConnection.isSignedIn()) {
             navigate('/main')
         }
     }, []);
-    
+
     return (
-        <main className='signin'>
-            <h1 className='signin__header'>
+        <main>
+            <SignInWrapper>
+            <SignInTitle>
                 vote! Democracy in the blockchain
-            </h1>
-            <p className='signin__description'>
+            </SignInTitle>
+            <SignInDescr>
                 Your contract is storing a greeting message in the NEAR blockchain. To
                 change it you need to sign in using the NEAR Wallet. It is very simple,
                 just use the button below.
-            </p>
-            <p className='signin__description'>
+            </SignInDescr>
+            <SignInDescr>
                 Do not worry, this app runs in the test network ("testnet"). It works
                 just like the main network ("mainnet"), but using NEAR Tokens that are
                 only for testing!
-            </p>
-            <button className='signin__button' onClick={!window.walletConnection.isSignedIn()?login:logout}>Sign in</button>
+            </SignInDescr>
+            <SingInButton onClick={!window.walletConnection.isSignedIn()?login:logout}>Sign in</SingInButton>
+            </SignInWrapper>
         </main>
     )
 }

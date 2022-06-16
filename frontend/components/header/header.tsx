@@ -4,17 +4,22 @@ import {
   login,
   logout
 } from "../../assets/js/near/utils";
-import "./header.scss";
+import { HeaderWrapper, HeaderTitle, HeaderTitleAcc, HeaderBTN } from './headerComponents';
 
 export const Header: FunctionComponent = () => {
   return (
-    <div className="header">
+    <HeaderWrapper>
       <Toolbar>
-        <p className='header__title'>
+        <HeaderTitle>
           vote!
-        </p>
-        <button className="header__button" onClick={!window.walletConnection.isSignedIn()?login:logout}>{!window.walletConnection.isSignedIn()?"Log In":"Log Out"}</button>
+        </HeaderTitle>
+        {!window.walletConnection.isSignedIn()
+        ?''
+        :
+        <HeaderTitleAcc>Hi, {window.accountId}</HeaderTitleAcc>
+        }
+        <HeaderBTN onClick={!window.walletConnection.isSignedIn()?login:logout}>{!window.walletConnection.isSignedIn()?"Log In":"Log Out"}</HeaderBTN>
       </Toolbar>
-    </div>
+    </HeaderWrapper>
   );
 };

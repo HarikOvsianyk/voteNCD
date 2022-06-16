@@ -1,13 +1,11 @@
 import { FunctionComponent } from "react";
 import {
-  Box,
   Button,
-  Card as BasicCard,
   CardContent,
   Typography,
 } from "@mui/material";
+import { BasicCard, CardTitle, CardName, CardExpDate, WrapperVoices } from "./cardComponents";
 import { ICardProps } from "../../interfaces/interfaces";
-import "./card.scss";
 
 export const Card: FunctionComponent<ICardProps> = ({
   lawTitle,
@@ -17,15 +15,15 @@ export const Card: FunctionComponent<ICardProps> = ({
   against,
 }) => {
   return (
-    <BasicCard className="card">
+    <BasicCard>
       <CardContent>
-        <p className="card__title">{lawTitle}</p>
-        <p className="card__name">{lawName}</p>
-        <p className="card__expiration--date">Until: {expirationDate}</p>
-        <div className="card__wrapper--voices">
+        <CardTitle>{lawTitle}</CardTitle>
+        <CardName>{lawName}</CardName>
+        <CardExpDate>Until: {expirationDate}</CardExpDate>
+        <WrapperVoices>
           <Typography>In favor: {inFavor}</Typography>
           <Typography>Against: {against}</Typography>
-        </div>
+        </WrapperVoices>
         <Button>View more</Button>
       </CardContent>
     </BasicCard>

@@ -1,12 +1,10 @@
-import { FunctionComponent } from 'react';
-import './footer.scss';
+import { FunctionComponent } from "react";
+import { FooterWrapper, FooterTitle } from "./footerComponents";
 
-export const Footer: FunctionComponent = () =>  {
+export const Footer: FunctionComponent = () => {
   return (
-      <div className='footer'>
-      <p className='footer__title'>
-            vote!
-          </p>
-      </div>
+    <FooterWrapper>
+      <FooterTitle>vote!</FooterTitle>
+    </FooterWrapper>
   );
-}
+};
