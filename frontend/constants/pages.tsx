@@ -1,6 +1,5 @@
-import { Main, SignIn, LawPage } from '../pages';
-//   import { CLIENT_PATH } from '@/constants/path';
-//   import { PrivateRoute } from '@/privateRoute/privateRoute';
+import { Main, SignIn, LawPage, Error } from '../pages';
+  import { PrivateRoute } from '../components';
   
   export const PAGES = [
     {
@@ -11,13 +10,17 @@ import { Main, SignIn, LawPage } from '../pages';
     {
       label: 'Main',
       path: '/main',
-      element: <Main />,
+      element: <PrivateRoute component={Main}/>,
     },
     {
       label: 'Law Page',
       path: '/law/:id',
-      element: <LawPage />,
+      element: <PrivateRoute component={LawPage}/>,
     },
-
+    {
+      label: 'Error',
+      path: '/error',
+      element: <Error />,
+    },
   ];
   

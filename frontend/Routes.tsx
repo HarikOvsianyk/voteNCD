@@ -7,6 +7,6 @@ export const Routes: FunctionComponent = () => (
     {PAGES.map((route) => (
       <Route key={route.path} path={route.path} element={route.element} />
     ))}
-    {/* <Route path="*" element={<Navigate to="/error" replace />} /> */}
+    <Route path="*" element={<Navigate to="/error" replace />} />
   </RoutesComponent>
 );
