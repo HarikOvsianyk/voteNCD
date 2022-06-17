@@ -6,6 +6,7 @@ const laws = [
   {
     lawTitle: "Criminal",
     lawName: "Against Russian Invasion",
+    author: 'Harik Ovsianyk',
     expirationDate: "2022-09-09",
     inFavor: "202200",
     against: "202200",
@@ -14,6 +15,7 @@ const laws = [
   {
     lawTitle: "Civil",
     lawName: "Change retirement age",
+    author: 'Harik Ovsianyk',
     expirationDate: "2022-10-10",
     inFavor: "202200",
     against: "202200", 
@@ -24,9 +26,10 @@ const laws = [
 export const Main: FunctionComponent = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
-      {laws.map(({lawTitle, lawName,expirationDate,inFavor, against, id  }) => (
+      {laws.map(({lawTitle, lawName,expirationDate,inFavor, against, id, author  }) => (
           <Card 
           lawTitle={lawTitle}
+          author={author}
           lawName={lawName}
           expirationDate={expirationDate}
           inFavor={inFavor}

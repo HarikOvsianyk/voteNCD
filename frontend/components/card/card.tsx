@@ -4,12 +4,14 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { BasicCard, CardTitle, CardName, CardExpDate, WrapperVoices, CardBTN } from "./cardComponents";
+import { BasicCard, CardTitle, CardName, CardExpDate, WrapperVoices } from "./cardComponents";
+import {Button } from '../shared/button';
 import { ICardProps } from "../../interfaces/interfaces";
 
 export const Card: FunctionComponent<ICardProps> = ({
   lawTitle,
   lawName,
+  author,
   expirationDate,
   inFavor,
   against,
@@ -22,12 +24,13 @@ export const Card: FunctionComponent<ICardProps> = ({
         <CardTitle>{lawTitle}</CardTitle>
         <CardTitle>Law id: {id}</CardTitle>
         <CardName>{lawName}</CardName>
+        <CardTitle>{author}</CardTitle>
         <CardExpDate>Until: {expirationDate}</CardExpDate>
         <WrapperVoices>
           <Typography>In favor: {inFavor}</Typography>
           <Typography>Against: {against}</Typography>
         </WrapperVoices>
-        <CardBTN>View more</CardBTN>
+        <Button>View more</Button>
       </CardContent>
     </BasicCard>
   );

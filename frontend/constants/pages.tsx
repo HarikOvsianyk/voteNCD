@@ -1,4 +1,4 @@
-import { Main, SignIn, LawPage, Error } from '../pages';
+import { Main, SignIn, LawPage, Error, NewLaw } from '../pages';
   import { PrivateRoute } from '../components';
   
   export const PAGES = [
@@ -21,6 +21,11 @@ import { Main, SignIn, LawPage, Error } from '../pages';
       label: 'Error',
       path: '/error',
       element: <Error />,
+    },
+    {
+      label: 'NewLaw',
+      path: '/new',
+      element: <PrivateRoute component={NewLaw}/>,
     },
   ];
   

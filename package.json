@@ -35,12 +35,14 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.8.3",
+    "formik": "^2.2.9",
     "near-api-js": "~0.44.2",
     "near-sdk-as": "^3.2.3",
     "react": "~18.1.0",
     "react-dom": "~18.1.0",
     "react-router-dom": "^6.3.0",
-    "regenerator-runtime": "~0.13.9"
+    "regenerator-runtime": "~0.13.9",
+    "yup": "^0.32.11"
   },
   "resolutions": {
     "@babel/preset-env": "7.13.8"

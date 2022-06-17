@@ -5,10 +5,14 @@ import {
   LawTitle,
   LawName,
   LawExpDate,
-  WrapperVoices,
-  LawBTN,
+  WrapperVoices
 } from "./lawPageComponents";
-import { ILawProps } from "../../interfaces/interfaces";
+import { Button } from '../../components';
+import { ICardProps } from "../../interfaces/interfaces";
+
+interface ILawProps extends ICardProps {
+  description: string;
+} // ask about union type ICardProps and ILawProps
 
 export const LawPage: FunctionComponent<ILawProps> = ({
   lawTitle,
@@ -16,10 +20,11 @@ export const LawPage: FunctionComponent<ILawProps> = ({
   expirationDate,
   inFavor,
   against,
+  description
 }) => {
   return (
     <LawWrapper>
-      <Paper elevation={3} sx={{ width: '500px', height: '100%'}}>
+      <Paper elevation={3} sx={{ width: '500px', height: '40vh'}}>
         <Box sx={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', alignItems:'center', p:1}}>
           <LawTitle>{lawTitle}</LawTitle>
           <LawName>{lawName}</LawName>
@@ -29,9 +34,12 @@ export const LawPage: FunctionComponent<ILawProps> = ({
             <Typography>Against: {against}</Typography>
           </WrapperVoices>
           <WrapperVoices>
-          <LawBTN>Favor</LawBTN>
-          <LawBTN>Against</LawBTN>
+          <Button>Favor</Button>
+          <Button>Against</Button>
           </WrapperVoices>
+          <Box sx={{width: '500px', height: '500px'}}>
+            {description}
+          </Box>
         </Box>
       </Paper>
     </LawWrapper>

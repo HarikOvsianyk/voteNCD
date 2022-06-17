@@ -27,18 +27,3 @@ export const WrapperVoices = styled(Box)({
   justifyContent: "space-around",
   width: '100%'
 });
-
-export const LawBTN = styled("button")({
-  backgroundColor: colors.main,
-  color: colors.white,
-  fontWeight: "500",
-  fontSize: "0.875rem",
-  lineHeight: "1.75",
-  letterSpacing: "0.02857em",
-  textTransform: "uppercase",
-  minWidth: "64px",
-  padding: "5px 15px",
-  borderRadius: "4px",
-  cursor: "pointer",
-  border: "none",
-});
