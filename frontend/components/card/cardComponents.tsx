@@ -7,7 +7,6 @@ import {
   import { colors } from '../../constants/colors';
 
   export const BasicCard = styled(Card)({
-    maxWidth: '275px',
     margin: '10px',
     padding: '10px',
     flexGrow: 1,

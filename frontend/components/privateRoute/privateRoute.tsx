@@ -6,7 +6,6 @@ interface IPrivateRouteProps {
 }
 
 export const PrivateRoute: FunctionComponent<IPrivateRouteProps> = ({ component: Component }) => {
-    console.log(window.walletConnection.isSignedIn());
   return (window.walletConnection.isSignedIn() ? (
             <Component />
   ) : (
