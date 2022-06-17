@@ -15,7 +15,7 @@ import { Main, SignIn, LawPage } from '../pages';
     },
     {
       label: 'Law Page',
-      path: '/law',
+      path: '/law/:id',
       element: <LawPage />,
     },
 

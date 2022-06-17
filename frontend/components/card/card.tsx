@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { useNavigate } from 'react-router-dom';
 import {
   CardContent,
   Typography,
@@ -12,11 +13,14 @@ export const Card: FunctionComponent<ICardProps> = ({
   expirationDate,
   inFavor,
   against,
+  id
 }) => {
+  const navigate = useNavigate();
   return (
-    <BasicCard>
+    <BasicCard onClick={() => (navigate(`/law/${id}`))}>
       <CardContent>
         <CardTitle>{lawTitle}</CardTitle>
+        <CardTitle>Law id: {id}</CardTitle>
         <CardName>{lawName}</CardName>
         <CardExpDate>Until: {expirationDate}</CardExpDate>
         <WrapperVoices>

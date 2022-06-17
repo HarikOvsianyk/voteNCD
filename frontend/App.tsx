@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 //   set_greeting,
 // } from "./assets/js/near/utils";
 // import getConfig from "./assets/js/near/config";
-import { Layout } from "./components";
+import { Layout } from "./layout";
 import "./assets/scss/global.scss";
 import { Routes } from './Routes';
 

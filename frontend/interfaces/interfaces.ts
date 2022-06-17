@@ -4,6 +4,7 @@ export interface ICardProps {
     expirationDate: string;
     inFavor: string;
     against: string;
+    id: string | number;
 }
 
 export interface ILawProps extends ICardProps{

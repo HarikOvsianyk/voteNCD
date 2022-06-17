@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
+import { Toolbar } from "@mui/material";
 import {
   login,
   logout

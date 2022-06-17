@@ -1,4 +1,3 @@
-export * from './card/card';
-export * from './footer/footer';
-export * from './header/header';
-export * from './layout/layout';
+export {Card} from './card/card';
+export {Footer} from './footer/footer';
+export {Header} from './header/header';

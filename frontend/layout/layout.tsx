@@ -1,10 +1,8 @@
 import { FunctionComponent, ReactNode } from "react";
-import { Footer, Header } from "../index";
+import { Footer, Header } from "../components";
 import { LayoutWrapper, LayoutChildren } from "./layoutComponents";
 
-export const Layout: FunctionComponent<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const Layout: FunctionComponent<{ children: ReactNode }> = ({children}) => {
   return (
     <LayoutWrapper>
       <Header />

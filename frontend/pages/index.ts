@@ -1,3 +1,3 @@
-export * from './lawPage/lawPage';
-export * from './main/main';
-export * from './signin/signin';
+export {LawPage} from './lawPage/lawPage';
+export {Main} from './main/main';
+export {SignIn} from './signin/signin';
