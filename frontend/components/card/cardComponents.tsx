@@ -7,9 +7,10 @@ import {
   import { colors } from '../../constants/colors';
 
   export const BasicCard = styled(Card)({
+    width: '275px',
     margin: '10px',
     padding: '10px',
-    flexGrow: 1,
+    justifyContent: 'center'
   });
 
   export const CardTitle = styled(Typography)({

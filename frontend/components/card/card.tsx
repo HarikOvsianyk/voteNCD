@@ -20,7 +20,7 @@ export const Card: FunctionComponent<ICardProps> = ({
   const navigate = useNavigate();
   return (
     <BasicCard onClick={() => (navigate(`/law/${id}`))}>
-      <CardContent sx={{ width: '275px'}}>
+      <CardContent>
         <CardTitle>{lawTitle}</CardTitle>
         <CardTitle>Law id: {id}</CardTitle>
         <CardName>{lawName}</CardName>

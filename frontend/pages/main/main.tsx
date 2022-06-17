@@ -21,7 +21,17 @@ const laws = [
     inFavor: "202200",
     against: "202200", 
     id: 2
-  },  {
+  },
+  {
+    lawTitle: "Civil",
+    lawName: "Change retirement age",
+    author: 'Harik Ovsianyk',
+    expirationDate: "2022-10-10",
+    inFavor: "202200",
+    against: "202200", 
+    id: 2
+  },
+  {
     lawTitle: "Civil",
     lawName: "Change retirement age",
     author: 'Harik Ovsianyk',
@@ -35,7 +45,7 @@ const laws = [
 export const Main: FunctionComponent = () => {
   const navigate = useNavigate();
   return (
-    <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2 }}>
+    <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
       {laws.map(({lawTitle, lawName,expirationDate,inFavor, against, id, author  }) => (
           <Card 
           lawTitle={lawTitle}
