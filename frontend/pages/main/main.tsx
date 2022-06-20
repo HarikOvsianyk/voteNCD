@@ -24,7 +24,7 @@ const laws = [
   },
   {
     lawTitle: "Civil",
-    lawName: "Change retirement age",
+    lawName: "Change retirement age1",
     author: 'Harik Ovsianyk',
     expirationDate: "2022-10-10",
     forVote: "202200",
@@ -33,7 +33,7 @@ const laws = [
   },
   {
     lawTitle: "Civil",
-    lawName: "Change retirement age",
+    lawName: "Change retirement age2",
     author: 'Harik Ovsianyk',
     expirationDate: "2022-10-10",
     forVote: "202200",

@@ -4,11 +4,13 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useFormik } from "formik";
+import { useNavigate } from 'react-router-dom';
 import { Form, FormField } from "./newLawComponents";
 import { Button } from "../../components/shared/button";
 import { ILawProps } from "../../interfaces/interfaces";
 import { LAW_FIELDS } from "../../constants";
 import { schemaNewLaw } from "../../utils";
+import { Navigate } from "react-router-dom";
 
 const titles = [
   {
@@ -30,6 +32,7 @@ const titles = [
 ];
 
 export const NewLaw: FunctionComponent = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState<Date | null>(null);
   const formik = useFormik({
     initialValues: {
@@ -39,9 +42,10 @@ export const NewLaw: FunctionComponent = () => {
       description: "",
     },
     validationSchema: schemaNewLaw,
-    onSubmit: async ({ lawTitle, lawName, author, description }: ILawProps) => {
-      console.log(lawTitle, lawName, author, description);
-      console.log("hey");
+    onSubmit: async (data: ILawProps) => {
+      console.log(data);
+      formik.resetForm() // doesn't work
+      navigate('/main');
     },
   });
   return (
@@ -56,7 +60,7 @@ export const NewLaw: FunctionComponent = () => {
             p: 1,
           }}
         >
-          <Form>
+          <Form onSubmit={formik.handleSubmit}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Expiration date"
@@ -81,7 +85,7 @@ export const NewLaw: FunctionComponent = () => {
                 multiline={true}
                 rows={registerValue === "description" ? 3 : 1}
                 defaultValue={formik.initialValues[registerValue]}
-                error={formik.errors[registerValue]}
+                error={!!formik.errors[registerValue]}
                 helperText={formik.errors[registerValue]}
               >
                 {registerValue === "lawTitle"

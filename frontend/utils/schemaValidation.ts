@@ -2,10 +2,6 @@ import * as yup from "yup";
 
 export const schemaNewLaw = yup
   .object({
-    lawTitle: yup
-      .string()
-      .matches(/^([^0-9]*)$/, "First name should not contain numbers")
-      .required("Title name is required field"),
     lawName: yup
       .string()
       .matches(/^([^0-9]*)$/, "Surname should not contain numbers")

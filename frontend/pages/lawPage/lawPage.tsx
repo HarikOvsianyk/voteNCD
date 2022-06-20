@@ -41,8 +41,10 @@ export const LawPage: FunctionComponent = ({}) => {
             against,
             description,
             author,
+            id
           }) => (
             <Box
+            key={id}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -64,17 +66,17 @@ export const LawPage: FunctionComponent = ({}) => {
                 }}
               >
                 <WrapperVoices>
-                  <Typography sx={{ textAlign: "center" }}>
+                  <Box sx={{ textAlign: "center" }}>
                     For:{" "}
                     <Typography sx={{ color: "green" }}>{forVote}</Typography>
-                  </Typography>
+                  </Box>
                   <Button>For</Button>
                 </WrapperVoices>
                 <WrapperVoices>
-                  <Typography sx={{ textAlign: "center" }}>
+                  <Box sx={{ textAlign: "center" }}>
                     Against:{" "}
                     <Typography sx={{ color: "red" }}>{against}</Typography>
-                  </Typography>
+                  </Box>
                   <Button>Against</Button>
                 </WrapperVoices>
               </Box>
