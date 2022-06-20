@@ -30,7 +30,7 @@ export const LawPage: FunctionComponent<ILawProps> = ({
           <LawName>{lawName}</LawName>
           <LawExpDate>Until: {expirationDate}</LawExpDate>
           <WrapperVoices>
-            <Typography>In favor: {forVote}</Typography>
+            <Typography>For: {forVote}</Typography>
             <Typography>Against: {against}</Typography>
           </WrapperVoices>
           <WrapperVoices>

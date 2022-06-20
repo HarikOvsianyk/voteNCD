@@ -1,1 +1,1 @@
-export type TLaw = 'lawTitle' | 'author' | 'lawName' | 'description';
+export type TLaw = 'lawTitle' | 'author' | 'lawName' | 'description' | 'date';
