@@ -46,13 +46,13 @@ export const Main: FunctionComponent = () => {
   const navigate = useNavigate();
   return (
     <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
-      {laws.map(({lawTitle, lawName,expirationDate,inFavor, against, id, author  }) => (
+      {laws.map(({lawTitle, lawName,expirationDate,for, against, id, author  }) => (
           <Card 
           lawTitle={lawTitle}
           author={author}
           lawName={lawName}
           expirationDate={expirationDate}
-          inFavor={inFavor}
+          for={for}
           against={against}
           id={id}
           />

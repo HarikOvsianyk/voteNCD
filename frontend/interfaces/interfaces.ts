@@ -12,7 +12,7 @@ export interface ILawProps extends IBaseProps {
 
 export interface ICardProps extends IBaseProps {
   expirationDate: string;
-  inFavor: string;
+  for: string;
   against: string;
   id: string | number;
 }

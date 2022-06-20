@@ -13,7 +13,7 @@ export const Card: FunctionComponent<ICardProps> = ({
   lawName,
   author,
   expirationDate,
-  inFavor,
+  for,
   against,
   id
 }) => {
@@ -27,7 +27,7 @@ export const Card: FunctionComponent<ICardProps> = ({
         <CardTitle>{author}</CardTitle>
         <CardExpDate>Until: {expirationDate}</CardExpDate>
         <WrapperVoices>
-          <Typography>In favor: {inFavor}</Typography>
+          <Typography>In favor: {for}</Typography>
           <Typography>Against: {against}</Typography>
         </WrapperVoices>
         <Button>View more</Button>
