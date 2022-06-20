@@ -9,7 +9,7 @@ const laws = [
     lawName: "Against Russian Invasion",
     author: 'Harik Ovsianyk',
     expirationDate: "2022-09-09",
-    inFavor: "202200",
+    forVote: "202200",
     against: "202200",
     id: 1
   },
@@ -18,7 +18,7 @@ const laws = [
     lawName: "Change retirement age",
     author: 'Harik Ovsianyk',
     expirationDate: "2022-10-10",
-    inFavor: "202200",
+    forVote: "202200",
     against: "202200", 
     id: 2
   },
@@ -27,7 +27,7 @@ const laws = [
     lawName: "Change retirement age",
     author: 'Harik Ovsianyk',
     expirationDate: "2022-10-10",
-    inFavor: "202200",
+    forVote: "202200",
     against: "202200", 
     id: 2
   },
@@ -36,7 +36,7 @@ const laws = [
     lawName: "Change retirement age",
     author: 'Harik Ovsianyk',
     expirationDate: "2022-10-10",
-    inFavor: "202200",
+    forVote: "202200",
     against: "202200", 
     id: 2
   }
@@ -46,13 +46,14 @@ export const Main: FunctionComponent = () => {
   const navigate = useNavigate();
   return (
     <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
-      {laws.map(({lawTitle, lawName,expirationDate,for, against, id, author  }) => (
+      {laws.map(({ lawName, lawTitle, author, expirationDate, forVote , against, id  }) => (
           <Card 
+          key={lawName}
           lawTitle={lawTitle}
           author={author}
           lawName={lawName}
           expirationDate={expirationDate}
-          for={for}
+          forVote={forVote}
           against={against}
           id={id}
           />
