@@ -7,19 +7,25 @@ import {
   import { colors } from '../../constants/colors';
 
   export const BasicCard = styled(Card)({
-    width: '275px',
+    width: '300px',
+    height: '100%',
     margin: '10px',
     padding: '10px',
-    justifyContent: 'center'
   });
 
   export const CardTitle = styled(Typography)({
     fontSize: '20px',
   });
+
+  export const CardIdTitle = styled(Typography)({
+    fontSize: '15px',
+    color: '#D7D7D7',
+  });
   
   export const CardName = styled(Typography)({
     color: colors.main,
-    fontSize: '30px',
+    fontSize: '22px',
+    flexGrow: 1,
   });
 
   export const CardExpDate = styled(Typography)({

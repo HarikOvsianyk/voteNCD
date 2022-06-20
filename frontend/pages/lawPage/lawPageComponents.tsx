@@ -22,8 +22,8 @@ export const LawExpDate = styled(Typography)({
 });
 
 export const WrapperVoices = styled(Box)({
+  width: '45%',
   display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-around",
-  width: '100%'
+  flexDirection: "column",
+  justifyContent: "space-around"
 });
