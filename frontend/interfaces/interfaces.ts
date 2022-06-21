@@ -1,23 +1,17 @@
 import { TLaw } from "./types";
 
-export interface IBaseProps {
+export interface IVoteProps {
   lawTitle: string;
   author: string;
   lawName: string;
-}
-
-export interface ILawProps extends IBaseProps {
-  description: string;
-}
-
-export interface ICardProps extends IBaseProps {
   expirationDate: string;
   forVote: string;
   against: string;
-  id: string | number;
+  description?: string;
+  id: string;
 }
 
-export interface ILawFields {
+export interface IVoteFields {
   registerValue: TLaw;
   type: string;
   label: string;

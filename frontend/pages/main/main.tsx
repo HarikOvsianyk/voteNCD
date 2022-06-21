@@ -1,52 +1,20 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { Card, Button } from "../../components";
 
-const laws = [
-  {
-    lawTitle: "Criminal",
-    lawName: "Against Russian Invasion",
-    author: 'Harik Ovsianyk',
-    expirationDate: "2022-09-09",
-    forVote: "202200",
-    against: "202200",
-    id: 1
-  },
-  {
-    lawTitle: "Civil",
-    lawName: "Change retirement age",
-    author: 'Harik Ovsianyk',
-    expirationDate: "2022-10-10",
-    forVote: "202200",
-    against: "202200", 
-    id: 2
-  },
-  {
-    lawTitle: "Civil",
-    lawName: "Change retirement age1",
-    author: 'Harik Ovsianyk',
-    expirationDate: "2022-10-10",
-    forVote: "202200",
-    against: "202200", 
-    id: 2
-  },
-  {
-    lawTitle: "Civil",
-    lawName: "Change retirement age2",
-    author: 'Harik Ovsianyk',
-    expirationDate: "2022-10-10",
-    forVote: "202200",
-    against: "202200", 
-    id: 2
-  }
-];
-
 export const Main: FunctionComponent = () => {
+  const [votes, setVotes] = useState([]);
   const navigate = useNavigate();
+  // useEffect(() => {
+  //   const getVotes = async () => {
+  //     setVotes(await window.contract.(???));
+  //   };
+  //   getVotes();
+  // },[]);
   return (
     <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
-      {laws.map(({ lawName, lawTitle, author, expirationDate, forVote , against, id  }) => (
+      {votes.map(({ lawName, lawTitle, author, expirationDate, forVote , against, id  }) => (
           <Card 
           key={lawName}
           lawTitle={lawTitle}

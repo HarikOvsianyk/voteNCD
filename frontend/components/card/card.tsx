@@ -10,9 +10,9 @@ import {
   CardIdTitle,
 } from "./cardComponents";
 import { Button } from "../shared/button";
-import { ICardProps } from "../../interfaces/interfaces";
+import { IVoteProps } from "../../interfaces/interfaces";
 
-export const Card: FunctionComponent<ICardProps> = ({
+export const Card: FunctionComponent<IVoteProps> = ({
   lawTitle,
   lawName,
   author,

@@ -46,6 +46,7 @@
     "react-dom": "~18.1.0",
     "react-router-dom": "^6.3.0",
     "regenerator-runtime": "~0.13.9",
+    "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
   "resolutions": {

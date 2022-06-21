@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { Box, Paper, MenuItem } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -7,10 +8,9 @@ import { useFormik } from "formik";
 import { useNavigate } from 'react-router-dom';
 import { Form, FormField } from "./newLawComponents";
 import { Button } from "../../components/shared/button";
-import { ILawProps } from "../../interfaces/interfaces";
+import { IVoteProps } from "../../interfaces/interfaces";
 import { LAW_FIELDS } from "../../constants";
 import { schemaNewLaw } from "../../utils";
-import { Navigate } from "react-router-dom";
 
 const titles = [
   {
@@ -36,14 +36,18 @@ export const NewLaw: FunctionComponent = () => {
   const [value, setValue] = useState<Date | null>(null);
   const formik = useFormik({
     initialValues: {
-      lawTitle: "",
-      lawName: "",
-      author: "",
-      description: "",
+      expirationDate: '',
+      forVote: '',
+      against: '',
+      lawTitle: '',
+      lawName: '',
+      author: '',
+      description: '',
+      id: '',
     },
     validationSchema: schemaNewLaw,
-    onSubmit: async (data: ILawProps) => {
-      console.log(data);
+    onSubmit: async (data: IVoteProps) => {
+      data.id = uuidv4().slice(0,7);
       formik.resetForm() // doesn't work
       navigate('/main');
     },
