@@ -48,6 +48,7 @@ export const NewLaw: FunctionComponent = () => {
     validationSchema: schemaNewLaw,
     onSubmit: async (data: IVoteProps) => {
       data.id = uuidv4().slice(0,7);
+      await window.contract.addToVoteArray({vote: data});
       formik.resetForm() // doesn't work
       navigate('/main');
     },

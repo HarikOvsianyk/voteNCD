@@ -9,13 +9,6 @@ const userParticipation = new PersistentMap<string, string[]>(
 );
 
 //View methods
-// export function getUrl(name: string): string {
-//   if (VoteURL.contains(name)) {
-//     return VoteURL.getSome(name);
-//   }
-//   logging.log("can not find that user");
-//   return "";
-// }
 
 export function didParticipate(prompt: string, user:string):bool{
   if(userParticipation.contains(prompt)){
@@ -43,18 +36,14 @@ export function getVotes(prompt:string):i32[]{
 }
 
 //Change methods
-// export function addUrl(name: string, url: string): void {
-//   VoteURL.set(name, url);
-//   logging.log(`Added url for ${name}`);
-// }
 
-export function addToVoteArray(prompt:IVoteProps):void{
+export function addToVoteArray(vote:IVoteProps):void{
   logging.log('Added to prompt array')
   if(VoteArray.contains('AllArrays')){
     let tempArray = VoteArray.getSome('AllArrays');
-    tempArray.push(prompt);
+    tempArray.push(vote);
   }
-  VoteArray.set('AllArrays', [prompt]);
+  VoteArray.set('AllArrays', [vote]);
 }
 
 export function addVote(prompt: string, index: i32): void {

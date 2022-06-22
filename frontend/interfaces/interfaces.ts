@@ -7,7 +7,7 @@ export interface IVoteProps {
   expirationDate: string;
   forVote: string;
   against: string;
-  description?: string;
+  description: string;
   id: string;
 }
 
