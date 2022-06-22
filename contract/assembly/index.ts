@@ -1,7 +1,6 @@
 import { logging, PersistentMap } from "near-sdk-as";
-import { IVoteProps } from '../../frontend/interfaces/interfaces';
+import { IVoteProps } from "./model";
 
-// const VoteURL = new PersistentMap<string, string>("VoteURL");
 const VoteArray = new PersistentMap<string, IVoteProps[]>("Array of prompts");
 const VotingArray = new PersistentMap<string, i32[]>("Stores votes");
 const userParticipation = new PersistentMap<string, string[]>(
@@ -42,6 +41,7 @@ export function addToVoteArray(vote:IVoteProps):void{
   if(VoteArray.contains('AllArrays')){
     let tempArray = VoteArray.getSome('AllArrays');
     tempArray.push(vote);
+    VoteArray.set('AllArrays', tempArray)
   }
   VoteArray.set('AllArrays', [vote]);
 }

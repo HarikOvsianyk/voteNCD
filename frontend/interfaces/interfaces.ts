@@ -1,10 +1,10 @@
-import { TLaw } from "./types";
+// import { TLaw } from "./types";
 
 export interface IVoteProps {
   lawTitle: string;
   author: string;
   lawName: string;
-  expirationDate: string;
+  // expirationDate: Date | null;
   forVote: string;
   against: string;
   description: string;
@@ -12,7 +12,7 @@ export interface IVoteProps {
 }
 
 export interface IVoteFields {
-  registerValue: TLaw;
+  registerValue: any;
   type: string;
   label: string;
 }

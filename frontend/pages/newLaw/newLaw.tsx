@@ -33,10 +33,10 @@ const titles = [
 
 export const NewLaw: FunctionComponent = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState<Date | null>(null);
+  const [date, setDate] = useState<Date | null>(null);
   const formik = useFormik({
     initialValues: {
-      expirationDate: '',
+      expirationDate: null,
       forVote: '',
       against: '',
       lawTitle: '',
@@ -48,6 +48,8 @@ export const NewLaw: FunctionComponent = () => {
     validationSchema: schemaNewLaw,
     onSubmit: async (data: IVoteProps) => {
       data.id = uuidv4().slice(0,7);
+      // data.expirationDate = date;
+      console.log(data);
       await window.contract.addToVoteArray({vote: data});
       formik.resetForm() // doesn't work
       navigate('/main');
@@ -69,10 +71,10 @@ export const NewLaw: FunctionComponent = () => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Expiration date"
-                value={value}
+                value={date}
                 minDate={new Date()}
                 onChange={(newValue) => {
-                  setValue(newValue);
+                  setDate(newValue);
                 }}
                 renderInput={(params) => <FormField {...params} />}
               />

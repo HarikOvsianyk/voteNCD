@@ -20,7 +20,7 @@ export const Main: FunctionComponent = () => {
           lawTitle={lawTitle}
           author={author}
           lawName={lawName}
-          expirationDate={expirationDate}
+          // expirationDate={expirationDate}
           forVote={forVote}
           against={against}
           id={id}

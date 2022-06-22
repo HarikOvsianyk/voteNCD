@@ -16,7 +16,7 @@ export const Card: FunctionComponent<IVoteProps> = ({
   lawTitle,
   lawName,
   author,
-  expirationDate,
+  // expirationDate,
   forVote,
   against,
   id,
@@ -35,7 +35,7 @@ export const Card: FunctionComponent<IVoteProps> = ({
         <CardIdTitle>Vote id: {id}</CardIdTitle>
         <CardName>{lawName}</CardName>
         <CardTitle>{author}</CardTitle>
-        <CardExpDate>Until: {expirationDate}</CardExpDate>
+        {/* <CardExpDate>Until: {expirationDate}</CardExpDate> */}
         <WrapperVoices>
           <Box sx={{ textAlign: "center" }}>
             For: <Typography sx={{ color: "green" }}>{forVote}</Typography>
