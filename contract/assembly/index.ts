@@ -18,7 +18,7 @@ export function didParticipate(prompt: string, user:string):bool{
   return false;
 }
 
-export function getAllPrompt():IVoteProps[]{
+export function getAllVotes():IVoteProps[]{
   if(VoteArray.contains('AllArrays')){
     return VoteArray.getSome('AllArrays');
   }
@@ -39,11 +39,14 @@ export function getVotes(prompt:string):i32[]{
 export function addToVoteArray(vote:IVoteProps):void{
   logging.log('Added to prompt array')
   if(VoteArray.contains('AllArrays')){
+    logging.log('add addition to prompt array');
     let tempArray = VoteArray.getSome('AllArrays');
     tempArray.push(vote);
     VoteArray.set('AllArrays', tempArray)
+  } else {
+    VoteArray.set('AllArrays', [vote]);
   }
-  VoteArray.set('AllArrays', [vote]);
+  
 }
 
 export function addVote(prompt: string, index: i32): void {

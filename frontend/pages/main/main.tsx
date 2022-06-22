@@ -8,7 +8,7 @@ export const Main: FunctionComponent = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const getVotes = async () => {
-      setVotes(await window.contract.getAllPrompt());
+      setVotes(await window.contract.getAllVotes());
     };
     getVotes();
   },[]);
