@@ -6,12 +6,12 @@ import { Card, Button } from "../../components";
 export const Main: FunctionComponent = () => {
   const [votes, setVotes] = useState([]);
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   const getVotes = async () => {
-  //     setVotes(await window.contract.(???));
-  //   };
-  //   getVotes();
-  // },[]);
+  useEffect(() => {
+    const getVotes = async () => {
+      setVotes(await window.contract.getAllPrompt());
+    };
+    getVotes();
+  },[]);
   return (
     <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
       {votes.map(({ lawName, lawTitle, author, expirationDate, forVote , against, id, description  }) => (
@@ -20,7 +20,7 @@ export const Main: FunctionComponent = () => {
           lawTitle={lawTitle}
           author={author}
           lawName={lawName}
-          // expirationDate={expirationDate}
+          expirationDate={expirationDate}
           forVote={forVote}
           against={against}
           id={id}

@@ -11,7 +11,6 @@ import {Button} from '../../components';
 export const SignIn: FunctionComponent = () => {
     const navigate = useNavigate();
     useEffect(() => {
-        console.log(window);
         if(window.walletConnection.isSignedIn()) {
             navigate('/main')
         }
