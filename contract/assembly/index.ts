@@ -9,44 +9,64 @@ const userParticipation = new PersistentMap<string, string[]>(
 
 //View methods
 
-export function didParticipate(prompt: string, user:string):bool{
-  if(userParticipation.contains(prompt)){
+export function didParticipate(prompt: string, user: string): bool {
+  if (userParticipation.contains(prompt)) {
     let getArray = userParticipation.getSome(prompt);
     return getArray.includes(user);
   }
-  logging.log('Prompt not found');
+  logging.log("Prompt not found");
   return false;
 }
 
-export function getAllVotes():IVoteProps[]{
-  if(VoteArray.contains('AllArrays')){
-    return VoteArray.getSome('AllArrays');
+export function getAllVotes(): IVoteProps[] {
+  if (VoteArray.contains("AllArrays")) {
+    return VoteArray.getSome("AllArrays");
   }
-  logging.log('No prompts found')
-  return []
+  logging.log("No prompts found");
+  return [];
 }
 
-export function getVotes(prompt:string):i32[]{
-  if(VotingArray.contains(prompt)){
-    return VotingArray.getSome(prompt);
+// export function getVotes(prompt:string):i32[]{
+//   if(VotingArray.contains(prompt)){
+//     return VotingArray.getSome(prompt);
+//   }
+//   logging.log('Prompt not found for this vote')
+//   return [0,0]
+// }
+
+// export function getVote(id:string): IVoteProps[]{
+//   if(VoteArray.contains('AllArrays')){
+//     return VoteArray.getSome(id);
+//   }
+//   logging.log('No votes found')
+//   return []
+// }
+
+export function getVote(query: string): IVoteProps[] {
+  let tempArray = VoteArray.getSome("AllArrays");
+  const result:IVoteProps[] = [];
+  for (let i = 0; i < tempArray.length; i++) {
+    if (tempArray[i].id === query) {
+      result.push(tempArray[i])
+      return result;
+    }
+    return result
   }
-  logging.log('Prompt not found for this vote')
-  return [0,0]
+  return result;
 }
 
 //Change methods
 
-export function addToVoteArray(vote:IVoteProps):void{
-  logging.log('Added to prompt array')
-  if(VoteArray.contains('AllArrays')){
-    logging.log('add addition to prompt array');
-    let tempArray = VoteArray.getSome('AllArrays');
+export function addToVoteArray(vote: IVoteProps): void {
+  logging.log("Added to prompt array");
+  if (VoteArray.contains("AllArrays")) {
+    logging.log("add addition to prompt array");
+    let tempArray = VoteArray.getSome("AllArrays");
     tempArray.push(vote);
-    VoteArray.set('AllArrays', tempArray)
+    VoteArray.set("AllArrays", tempArray);
   } else {
-    VoteArray.set('AllArrays', [vote]);
+    VoteArray.set("AllArrays", [vote]);
   }
-  
 }
 
 export function addVote(prompt: string, index: i32): void {
@@ -62,11 +82,16 @@ export function addVote(prompt: string, index: i32): void {
   VotingArray.set(prompt, newArray);
 }
 
-export function recordUser(prompt: string, user:string):void{
-  if(userParticipation.contains(prompt)){
+export function recordUser(prompt: string, user: string): void {
+  if (userParticipation.contains(prompt)) {
     let tempArray = userParticipation.getSome(prompt);
     tempArray.push(user);
     userParticipation.set(prompt, tempArray);
   }
   userParticipation.set(prompt, [user]);
 }
+
+export function clearVoteArray():void{
+  logging.log('clearing prompt array');
+  VoteArray.delete("AllArrays")
+} // delete array
