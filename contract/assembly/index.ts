@@ -1,7 +1,7 @@
 import { logging, PersistentMap } from "near-sdk-as";
 import { IVoteProps } from "./model";
 
-const VoteArray = new PersistentMap<string, IVoteProps[]>("Array of prompts");
+const VoteArray = new PersistentMap<string, IVoteProps>("Array of prompts");
 const VotingArray = new PersistentMap<string, i32[]>("Stores votes");
 const userParticipation = new PersistentMap<string, string[]>(
   "User participation record"
@@ -18,12 +18,14 @@ export function didParticipate(prompt: string, user: string): bool {
   return false;
 }
 
-export function getAllVotes(): IVoteProps[] {
-  if (VoteArray.contains("AllArrays")) {
-    return VoteArray.getSome("AllArrays");
-  }
-  logging.log("No prompts found");
-  return [];
+export function getAllVotes(): IVoteProps {
+  // if (VoteArray.contains("AllArrays")) {
+  //   return VoteArray.getSome("AllArrays");
+  // }
+  // logging.log("No prompts found");
+  // return {};
+  VoteArray.contains("AllArrays");
+  return VoteArray.getSome("AllArrays")
 }
 
 // export function getVotes(prompt:string):i32[]{
@@ -42,31 +44,37 @@ export function getAllVotes(): IVoteProps[] {
 //   return []
 // }
 
-export function getVote(query: string): IVoteProps[] {
-  let tempArray = VoteArray.getSome("AllArrays");
-  const result:IVoteProps[] = [];
-  for (let i = 0; i < tempArray.length; i++) {
-    if (tempArray[i].id === query) {
-      result.push(tempArray[i])
-      return result;
-    }
-    return result
-  }
-  return result;
+export function getVote(id:string): IVoteProps{
+  return VoteArray.getSome(id)
 }
+
+// export function getVote(query: string): IVoteProps[] {
+//   let tempArray = VoteArray.getSome("AllArrays");
+//   const result:IVoteProps[] = [];
+//   for (let i = 0; i < tempArray.length; i++) {
+//     if (tempArray[i].id === query) {
+//       result.push(tempArray[i])
+//       return result;
+//     }
+//     return result
+//   }
+//   return result;
+// }
 
 //Change methods
 
 export function addToVoteArray(vote: IVoteProps): void {
   logging.log("Added to prompt array");
-  if (VoteArray.contains("AllArrays")) {
-    logging.log("add addition to prompt array");
-    let tempArray = VoteArray.getSome("AllArrays");
-    tempArray.push(vote);
-    VoteArray.set("AllArrays", tempArray);
-  } else {
-    VoteArray.set("AllArrays", [vote]);
-  }
+  // if (VoteArray.contains("AllArrays")) {
+  //   logging.log("add addition to prompt array");
+  //   let tempArray = VoteArray.getSome("AllArrays");
+  //   logging.log(tempArray);
+  //   tempArray.push(vote);
+  //   VoteArray.set("AllArrays", tempArray);
+  // } else {
+  //   VoteArray.set("AllArrays", [vote]);
+  // }
+  VoteArray.set(vote.id, vote)
 }
 
 export function addVote(prompt: string, index: i32): void {

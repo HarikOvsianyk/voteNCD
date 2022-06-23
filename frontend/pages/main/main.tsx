@@ -7,10 +7,10 @@ export const Main: FunctionComponent = () => {
   const [votes, setVotes] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    const getVotes = async () => {
-      setVotes(await window.contract.getAllVotes());
-    };
-    getVotes();
+    // const getVotes = async () => {
+    //   setVotes(await window.contract.getAllVotes());
+    // };
+    // getVotes();
   },[]);
   return (
     <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
