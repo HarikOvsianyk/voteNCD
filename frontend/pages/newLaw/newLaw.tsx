@@ -49,8 +49,7 @@ export const NewLaw: FunctionComponent = () => {
     onSubmit: async (data: IVoteProps) => {
       data.id = uuidv4().slice(0,7);
       data.expirationDate = date.toLocaleDateString();
-      const vote = data.id;
-      await window.contract.addToVoteArray({vote:data});
+      await window.contract.addToVotesMap({vote:data});
       formik.resetForm() // doesn't work
       navigate('/main');
     },
