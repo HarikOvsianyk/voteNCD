@@ -6,8 +6,9 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import { Form, FormField } from "./newLawComponents";
-import { Button } from "../../components/shared/button";
+import { Button } from "../../components";
 import { Spinner } from "../../components";
 import { IVoteProps } from "../../interfaces/interfaces";
 import { LAW_FIELDS } from "../../constants";
@@ -56,6 +57,7 @@ export const NewLaw: FunctionComponent = () => {
       await window.contract.addToVotesMap({ vote: data });
       spinnerOff?.();
       formik.resetForm(); // doesn't work
+      toast.success(`You've created new vote ${data.lawTitle} ${data.lawName}`);
       navigate("/main");
     },
   });
