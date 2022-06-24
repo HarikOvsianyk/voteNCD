@@ -16,7 +16,7 @@ export const Main: FunctionComponent = () => {
     <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
       {votes.map(({ lawName, lawTitle, author, expirationDate, forVote , against, id, description  }) => (
           <Card 
-          key={lawName}
+          key={id}
           lawTitle={lawTitle}
           author={author}
           lawName={lawName}
