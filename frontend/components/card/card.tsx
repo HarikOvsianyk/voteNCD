@@ -36,14 +36,6 @@ export const Card: FunctionComponent<IVoteProps> = ({
         <CardName>{lawName}</CardName>
         <CardTitle>{author}</CardTitle>
         <CardExpDate>Until: {expirationDate}</CardExpDate>
-        <WrapperVoices>
-          <Box sx={{ textAlign: "center" }}>
-            For: <Typography sx={{ color: "green" }}>{forVote}</Typography>
-          </Box>
-          <Box sx={{ textAlign: "center" }}>
-            Against: <Typography sx={{ color: "red" }}>{against}</Typography>
-          </Box>
-        </WrapperVoices>
         <Button>View more</Button>
       </CardContent>
     </BasicCard>
