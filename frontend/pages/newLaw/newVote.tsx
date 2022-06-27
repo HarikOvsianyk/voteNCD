@@ -11,33 +11,16 @@ import { Form, FormField } from "./newVoteComponents";
 import { Button } from "../../components";
 import { Spinner } from "../../components";
 import { IVoteProps } from "../../interfaces/interfaces";
-import { VOTE_FIELDS } from "../../constants";
+import { VOTE_FIELDS, titles } from "../../constants";
 import { schemaNewVote } from "../../utils";
 import { Context } from "../../context/context";
 
-const titles = [
-  {
-    value: "Title 1—General Provisions",
-    label: "Title 1—General Provisions",
-  },
-  {
-    value: "Title 2—The Congress",
-    label: "Title 2—The Congress",
-  },
-  {
-    value: "Title 3—The President",
-    label: "Title 3—The President",
-  },
-  {
-    value: "Title 4—Flag And Seal, Seat Of Government, And The States",
-    label: "Title 4—Flag And Seal, Seat Of Government, And The States",
-  },
-];
-
 export const NewVote: FunctionComponent = () => {
+  const today = new Date();
+  const tomorrow = today.setDate(today.getDate() + 1);
   const navigate = useNavigate();
   const { spinner, spinnerOn, spinnerOff } = useContext(Context);
-  const [date, setDate] = useState<string | any>("");
+  const [date, setDate] = useState<number>(tomorrow);
   const formik = useFormik({
     initialValues: {
       expirationDate: "",
@@ -53,7 +36,7 @@ export const NewVote: FunctionComponent = () => {
     onSubmit: async (data: IVoteProps) => {
       spinnerOn?.();
       data.id = uuidv4().slice(0, 7);
-      data.expirationDate = date.toLocaleDateString();
+      data.expirationDate = new Date(date).toLocaleDateString() as string;
       await window.contract.addToVotesMap({ vote: data });
       spinnerOff?.();
       formik.resetForm(); // doesn't work
@@ -82,6 +65,7 @@ export const NewVote: FunctionComponent = () => {
                   label="Expiration date"
                   disablePast={true}
                   value={date}
+                  minDate={tomorrow}
                   inputFormat="MM/dd/yyyy"
                   views={["year", "month", "day"]}
                   onChange={(newValue) => {
