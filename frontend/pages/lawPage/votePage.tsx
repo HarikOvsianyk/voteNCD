@@ -107,14 +107,14 @@ export const VotePage: FunctionComponent = ({}) => {
                   For:{" "}
                   <Typography sx={{ color: "green" }}>{forVote}</Typography>
                 </Box>
-                <Button disabled={isVoted} onClick={() => setForVote()}>For</Button>
+                <Button sx={{display: !isVoted ? 'block': 'none'}} onClick={() => setForVote()}>For</Button>
               </WrapperVoices>
               <WrapperVoices>
                 <Box sx={{ textAlign: "center" }} visibility={isVoted?'visible':'hidden'}>
                   Against:{" "}
                   <Typography sx={{ color: "red" }}>{against}</Typography>
                 </Box>
-                <Button disabled={isVoted} onClick={() => setAgainst()}>Against</Button>
+                <Button sx={{display: !isVoted ? 'block': 'none'}} onClick={() => setAgainst()}>Against</Button>
               </WrapperVoices>
             </Box>
             <Box sx={{ m: 2, textAlign: "justify" }}>{description}</Box>
