@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useContext, useEffect } from "react";
+import { FunctionComponent, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Box, Paper, MenuItem } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -24,8 +24,8 @@ export const NewVote: FunctionComponent = () => {
   const formik = useFormik({
     initialValues: {
       expirationDate: "",
-      forVote: "",
-      against: "",
+      forVote: 0,
+      against: 0,
       voteTitle: "",
       voteName: "",
       author: "",

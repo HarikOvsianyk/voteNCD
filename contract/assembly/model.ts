@@ -4,8 +4,8 @@ export class IVoteProps {
   author: string;
   voteName: string;
   expirationDate: string;
-  forVote: string;
-  against: string;
+  forVote: i32;
+  against: i32;
   description: string;
   id: string;
 }

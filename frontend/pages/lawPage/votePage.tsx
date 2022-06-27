@@ -14,6 +14,7 @@ import { Context } from "../../context/context";
 
 export const VotePage: FunctionComponent = ({}) => {
   const { spinner, spinnerOn, spinnerOff } = useContext(Context);
+  const [isVoted, setIsVoted] = useState(false);
   const { id } = useParams();
   const [
     {
@@ -31,8 +32,8 @@ export const VotePage: FunctionComponent = ({}) => {
     author: "",
     voteName: "",
     expirationDate: "",
-    forVote: "",
-    against: "",
+    forVote: 0,
+    against: 0,
     description: "",
     id: "",
   });
@@ -41,10 +42,30 @@ export const VotePage: FunctionComponent = ({}) => {
     setVote(vote);
     spinnerOff?.();
   };
+
+  const checkVoted = async() => {
+    const vote = await window.contract.isUserVoted({id:id, accountId: window.accountId});
+    console.log(vote);
+    setIsVoted(vote);
+  }
+
   useEffect(() => {
     spinnerOn?.();
     getVote();
+    checkVoted();
   }, []);
+
+  const setForVote = async() => {
+    await window.contract.addForVote({id: id});
+    await window.contract.addToParticipation({id:id, accountId: window.accountId});
+    console.log('Working');
+  };
+
+  const setAgainst = async() => {
+    await window.contract.addToAgainst({id: id});
+    await window.contract.addToParticipation({id:id, accountId: window.accountId});
+    console.log('Working');
+  };
   return (
     <VoteWrapper>
       <Paper elevation={3} sx={{ width: "500px" }}>
@@ -82,18 +103,18 @@ export const VotePage: FunctionComponent = ({}) => {
               }}
             >
               <WrapperVoices>
-                <Box sx={{ textAlign: "center" }}>
+                <Box sx={{ textAlign: "center" }} visibility={isVoted?'visible':'hidden'}>
                   For:{" "}
                   <Typography sx={{ color: "green" }}>{forVote}</Typography>
                 </Box>
-                <Button>For</Button>
+                <Button disabled={isVoted} onClick={() => setForVote()}>For</Button>
               </WrapperVoices>
               <WrapperVoices>
-                <Box sx={{ textAlign: "center" }}>
+                <Box sx={{ textAlign: "center" }} visibility={isVoted?'visible':'hidden'}>
                   Against:{" "}
                   <Typography sx={{ color: "red" }}>{against}</Typography>
                 </Box>
-                <Button>Against</Button>
+                <Button disabled={isVoted} onClick={() => setAgainst()}>Against</Button>
               </WrapperVoices>
             </Box>
             <Box sx={{ m: 2, textAlign: "justify" }}>{description}</Box>

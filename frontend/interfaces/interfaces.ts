@@ -5,8 +5,8 @@ export interface IVoteProps {
   author: string;
   voteName: string;
   expirationDate: string;
-  forVote: string;
-  against: string;
+  forVote: number;
+  against: number;
   description: string;
   id: string;
 }
