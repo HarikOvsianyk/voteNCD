@@ -29,7 +29,7 @@ export const Main: FunctionComponent = () => {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            alignItems: "flex-start",
+            alignItems: "stretch",
             p: 2,
             width: "70vw",
           }}

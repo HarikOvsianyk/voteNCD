@@ -28,7 +28,7 @@ export const Card: FunctionComponent<IVoteProps> = ({
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <CardTitle>{lawTitle}</CardTitle>

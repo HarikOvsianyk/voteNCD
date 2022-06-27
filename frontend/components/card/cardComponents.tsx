@@ -8,9 +8,8 @@ import {
 
   export const BasicCard = styled(Card)({
     width: '300px',
-    height: '100%',
     margin: '10px',
-    padding: '10px',
+    padding: '10px'
   });
 
   export const CardTitle = styled(Typography)({
@@ -24,8 +23,7 @@ import {
   
   export const CardName = styled(Typography)({
     color: colors.main,
-    fontSize: '22px',
-    flexGrow: 1,
+    fontSize: '22px'
   });
 
   export const CardExpDate = styled(Typography)({
