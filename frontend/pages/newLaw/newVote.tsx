@@ -7,12 +7,12 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { Form, FormField } from "./newLawComponents";
+import { Form, FormField } from "./newVoteComponents";
 import { Button } from "../../components";
 import { Spinner } from "../../components";
 import { IVoteProps } from "../../interfaces/interfaces";
-import { LAW_FIELDS } from "../../constants";
-import { schemaNewLaw } from "../../utils";
+import { VOTE_FIELDS } from "../../constants";
+import { schemaNewVote } from "../../utils";
 import { Context } from "../../context/context";
 
 const titles = [
@@ -34,7 +34,7 @@ const titles = [
   },
 ];
 
-export const NewLaw: FunctionComponent = () => {
+export const NewVote: FunctionComponent = () => {
   const navigate = useNavigate();
   const { spinner, spinnerOn, spinnerOff } = useContext(Context);
   const [date, setDate] = useState<string | any>("");
@@ -43,13 +43,13 @@ export const NewLaw: FunctionComponent = () => {
       expirationDate: "",
       forVote: "",
       against: "",
-      lawTitle: "",
-      lawName: "",
+      voteTitle: "",
+      voteName: "",
       author: "",
       description: "",
       id: "",
     },
-    validationSchema: schemaNewLaw,
+    validationSchema: schemaNewVote,
     onSubmit: async (data: IVoteProps) => {
       spinnerOn?.();
       data.id = uuidv4().slice(0, 7);
@@ -57,7 +57,7 @@ export const NewLaw: FunctionComponent = () => {
       await window.contract.addToVotesMap({ vote: data });
       spinnerOff?.();
       formik.resetForm(); // doesn't work
-      toast.success(`You've created new vote ${data.lawTitle} ${data.lawName}`);
+      toast.success(`You've created new vote ${data.voteTitle} ${data.voteName}`);
       navigate("/main");
     },
   });
@@ -90,13 +90,13 @@ export const NewLaw: FunctionComponent = () => {
                   renderInput={(params) => <FormField {...params} />}
                 />
               </LocalizationProvider>
-              {LAW_FIELDS.map(({ type, label, registerValue }) => (
+              {VOTE_FIELDS.map(({ type, label, registerValue }) => (
                 <FormField
                   key={label}
                   id={registerValue}
                   name={registerValue}
                   type={type}
-                  select={registerValue === "lawTitle" ? true : false}
+                  select={registerValue === "voteTitle" ? true : false}
                   label={`Enter ${label}`}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -106,7 +106,7 @@ export const NewLaw: FunctionComponent = () => {
                   error={!!formik.errors[registerValue]}
                   helperText={formik.errors[registerValue]}
                 >
-                  {registerValue === "lawTitle"
+                  {registerValue === "voteTitle"
                     ? titles.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                           {option.label}

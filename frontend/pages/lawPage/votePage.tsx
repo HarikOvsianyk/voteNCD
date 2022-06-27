@@ -2,23 +2,23 @@ import { FunctionComponent, useEffect, useState, useContext } from "react";
 import { Box, Paper, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import {
-  LawWrapper,
-  LawTitle,
-  LawName,
-  LawExpDate,
+  VoteWrapper,
+  VoteTitle,
+  VoteName,
+  VoteExpDate,
   WrapperVoices,
-} from "./lawPageComponents";
+} from "./votePageComponents";
 import { Button, Spinner } from "../../components";
 import { IVoteProps } from "../../interfaces/interfaces";
 import { Context } from "../../context/context";
 
-export const LawPage: FunctionComponent = ({}) => {
+export const VotePage: FunctionComponent = ({}) => {
   const { spinner, spinnerOn, spinnerOff } = useContext(Context);
   const { id } = useParams();
   const [
     {
-      lawTitle,
-      lawName,
+      voteTitle,
+      voteName,
       author,
       expirationDate,
       forVote,
@@ -27,9 +27,9 @@ export const LawPage: FunctionComponent = ({}) => {
     },
     setVote,
   ] = useState<IVoteProps>({
-    lawTitle: "",
+    voteTitle: "",
     author: "",
-    lawName: "",
+    voteName: "",
     expirationDate: "",
     forVote: "",
     against: "",
@@ -46,7 +46,7 @@ export const LawPage: FunctionComponent = ({}) => {
     getVote();
   }, []);
   return (
-    <LawWrapper>
+    <VoteWrapper>
       <Paper elevation={3} sx={{ width: "500px" }}>
         {spinner ? (
           <Box             sx={{
@@ -69,10 +69,10 @@ export const LawPage: FunctionComponent = ({}) => {
               p: 1,
             }}
           >
-            <LawTitle>{lawTitle}</LawTitle>
-            <LawName>{lawName}</LawName>
-            <LawTitle>{author}</LawTitle>
-            <LawExpDate>Until: {expirationDate}</LawExpDate>
+            <VoteTitle>{voteTitle}</VoteTitle>
+            <VoteName>{voteName}</VoteName>
+            <VoteTitle>{author}</VoteTitle>
+            <VoteExpDate>Until: {expirationDate}</VoteExpDate>
             <Box
               sx={{
                 width: "100%",
@@ -100,6 +100,6 @@ export const LawPage: FunctionComponent = ({}) => {
           </Box>
         )}
       </Paper>
-    </LawWrapper>
+    </VoteWrapper>
   );
 };

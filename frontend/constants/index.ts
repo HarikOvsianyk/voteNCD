@@ -1,2 +1,2 @@
 export * from './pages';
-export {LAW_FIELDS} from './newLaw';
+export {VOTE_FIELDS} from './newVote';

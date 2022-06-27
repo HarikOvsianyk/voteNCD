@@ -36,8 +36,8 @@ export const Main: FunctionComponent = () => {
         >
           {votes.map(
             ({
-              lawName,
-              lawTitle,
+              voteName,
+              voteTitle,
               author,
               expirationDate,
               forVote,
@@ -47,9 +47,9 @@ export const Main: FunctionComponent = () => {
             }) => (
               <Card
                 key={id}
-                lawTitle={lawTitle}
+                voteTitle={voteTitle}
                 author={author}
-                lawName={lawName}
+                voteName={voteName}
                 expirationDate={expirationDate}
                 forVote={forVote}
                 against={against}
@@ -58,7 +58,7 @@ export const Main: FunctionComponent = () => {
               />
             )
           )}
-          <Button onClick={() => navigate("/new")}>Add new vote</Button>
+          <Button onClick={() => navigate("/newvote")}>Add new vote</Button>
         </Box>
       )}
     </>

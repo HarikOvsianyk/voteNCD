@@ -1,9 +1,9 @@
-// import { TLaw } from "./types";
+// import { TVote } from "./types";
 
 export interface IVoteProps {
-  lawTitle: string;
+  voteTitle: string;
   author: string;
-  lawName: string;
+  voteName: string;
   expirationDate: string;
   forVote: string;
   against: string;

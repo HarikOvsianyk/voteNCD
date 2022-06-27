@@ -1,20 +1,19 @@
 import { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
-import { CardContent, Typography, Box } from "@mui/material";
+import { CardContent } from "@mui/material";
 import {
   BasicCard,
   CardTitle,
   CardName,
   CardExpDate,
-  WrapperVoices,
   CardIdTitle,
 } from "./cardComponents";
 import { Button } from "../shared/button";
 import { IVoteProps } from "../../interfaces/interfaces";
 
 export const Card: FunctionComponent<IVoteProps> = ({
-  lawTitle,
-  lawName,
+  voteTitle,
+  voteName,
   author,
   expirationDate,
   forVote,
@@ -23,7 +22,7 @@ export const Card: FunctionComponent<IVoteProps> = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <BasicCard onClick={() => navigate(`/law/${id}`)}>
+    <BasicCard onClick={() => navigate(`/vote/${id}`)}>
       <CardContent
         sx={{
           display: "flex",
@@ -31,9 +30,9 @@ export const Card: FunctionComponent<IVoteProps> = ({
           justifyContent: "center"
         }}
       >
-        <CardTitle>{lawTitle}</CardTitle>
+        <CardTitle>{voteTitle}</CardTitle>
         <CardIdTitle>Vote id: {id}</CardIdTitle>
-        <CardName>{lawName}</CardName>
+        <CardName>{voteName}</CardName>
         <CardTitle>{author}</CardTitle>
         <CardExpDate>Until: {expirationDate}</CardExpDate>
         <Button>View more</Button>

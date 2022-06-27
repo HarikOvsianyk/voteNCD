@@ -1,4 +1,4 @@
-import { logging, PersistentMap, PersistentUnorderedMap } from "near-sdk-as";
+import { logging, PersistentUnorderedMap } from "near-sdk-as";
 import { IVoteProps } from "./model";
 
 const VotesMAP = new PersistentUnorderedMap<string, IVoteProps>('Vote');

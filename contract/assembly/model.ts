@@ -1,8 +1,8 @@
 @nearBindgen
 export class IVoteProps {
-  lawTitle: string;
+  voteTitle: string;
   author: string;
-  lawName: string;
+  voteName: string;
   expirationDate: string;
   forVote: string;
   against: string;

@@ -1,8 +1,8 @@
 import * as yup from "yup";
 
-export const schemaNewLaw = yup
+export const schemaNewVote = yup
   .object({
-    lawName: yup
+    voteName: yup
       .string()
       .matches(/^([^0-9]*)$/, "Surname should not contain numbers")
       .required("Name is required field"),
