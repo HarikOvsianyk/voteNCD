@@ -21,9 +21,10 @@ import {
     color: '#D7D7D7',
   });
   
-  export const CardName = styled(Typography)({
+  export const CardName = styled('p')({
     color: colors.main,
-    fontSize: '22px'
+    fontSize: '22px',
+    width: '100%',
   });
 
   export const CardExpDate = styled(Typography)({

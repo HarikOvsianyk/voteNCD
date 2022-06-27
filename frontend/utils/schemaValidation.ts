@@ -5,7 +5,8 @@ export const schemaNewVote = yup
     voteName: yup
       .string()
       .matches(/^([^0-9]*)$/, "Surname should not contain numbers")
-      .required("Name is required field"),
+      .required("Name is required field")
+      .max(25),
     author: yup
       .string()
       .matches(/^([^0-9]*)$/, "Surname should not contain numbers")

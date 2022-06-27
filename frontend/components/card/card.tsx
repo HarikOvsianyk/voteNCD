@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
-import { CardContent, Box } from "@mui/material";
+import { CardContent } from "@mui/material";
 import {
   BasicCard,
   CardTitle,
@@ -27,13 +27,11 @@ export const Card: FunctionComponent<IVoteProps> = ({
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          height: '500px'
+          justifyContent: "space-between",
+          height: '350px'
         }}
       >
-        <Box sx={{flexGrow: 1}}>
-        <CardTitle>{voteTitle}</CardTitle>
-        </Box>
+        <CardTitle sx={{flexGrow: 3}}>{voteTitle}</CardTitle>
         <CardIdTitle>Vote id: {id}</CardIdTitle>
         <CardName>{voteName}</CardName>
         <CardTitle>{author}</CardTitle>

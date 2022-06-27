@@ -9,10 +9,12 @@ export const VoteWrapper = styled(Box)({
 });
 
 export const VoteTitle = styled(Typography)({
+  textAlign:'center',
   fontSize: "20px",
 });
 
 export const VoteName = styled(Typography)({
+  textAlign:'center',
   color: colors.main,
   fontSize: "30px",
 });

@@ -30,6 +30,7 @@ export const Main: FunctionComponent = () => {
             flexDirection: "row",
             flexWrap: "wrap",
             alignItems: "stretch",
+            alignSelf: 'flex-start',
             p: 2,
             width: "70vw",
           }}
@@ -58,7 +59,7 @@ export const Main: FunctionComponent = () => {
               />
             )
           )}
-          <Button onClick={() => navigate("/newvote")}>Add new vote</Button>
+          <Button onClick={() => navigate("/newvote")} sx={{height: '35px'}}>Add new vote</Button>
         </Box>
       )}
     </>
