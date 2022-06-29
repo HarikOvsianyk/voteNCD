@@ -21,6 +21,7 @@ export const VoteName = styled(Typography)({
 
 export const VoteExpDate = styled(Typography)({
   margin: "15px",
+  fontStyle: 'italic',
 });
 
 export const WrapperVoices = styled(Box)({

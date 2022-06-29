@@ -1,4 +1,4 @@
-// import { TVote } from "./types";
+import { TVote } from "./types";
 
 export interface IVoteProps {
   voteTitle: string;
@@ -12,7 +12,7 @@ export interface IVoteProps {
 }
 
 export interface IVoteFields {
-  registerValue: any;
+  registerValue: TVote;
   type: string;
   label: string;
 }
