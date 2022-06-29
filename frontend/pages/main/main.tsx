@@ -1,20 +1,28 @@
 import { FunctionComponent, useEffect, useState, useContext } from "react";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Card, Button, Spinner } from "../../components";
 import { Context } from "../../context/context";
+import { IVoteProps } from "../../interfaces/interfaces";
 
 export const Main: FunctionComponent = () => {
   const { spinner, spinnerOn, spinnerOff } = useContext(Context);
-  const [votes, setVotes] = useState([]);
+  const [votes, setVotes] = useState<IVoteProps[]>([]);
   const navigate = useNavigate();
   const getMainData = async () => {
-    const data = await window.contract.getAllVotes();
-    setVotes(data);
-    spinnerOff?.();
-  }
+    try {
+      spinnerOn?.();
+      const data = await window.contract.getAllVotes();
+      setVotes(data);
+      spinnerOff?.();
+    } catch (err) {
+      spinnerOff?.();
+      console.log(err);
+      toast.error("Votes is not available. Try again!");
+    }
+  };
   useEffect(() => {
-    spinnerOn?.();
     getMainData();
   }, []);
   return (
@@ -30,7 +38,7 @@ export const Main: FunctionComponent = () => {
             flexDirection: "row",
             flexWrap: "wrap",
             alignItems: "stretch",
-            alignSelf: 'flex-start',
+            alignSelf: "flex-start",
             p: 2,
             width: "70vw",
           }}
@@ -59,7 +67,9 @@ export const Main: FunctionComponent = () => {
               />
             )
           )}
-          <Button onClick={() => navigate("/newvote")} sx={{height: '35px'}}>Add new vote</Button>
+          <Button onClick={() => navigate("/newvote")} sx={{ height: "35px" }}>
+            Add new vote
+          </Button>
         </Box>
       )}
     </>

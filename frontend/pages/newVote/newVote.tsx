@@ -6,7 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { Form, FormField } from "./newVoteComponents";
 import { Button } from "../../components";
 import { Spinner } from "../../components";
@@ -34,13 +34,23 @@ export const NewVote: FunctionComponent = () => {
     },
     validationSchema: schemaNewVote,
     onSubmit: async (data: IVoteProps) => {
-      spinnerOn?.();
-      data.id = uuidv4().slice(0, 7);
-      data.expirationDate = new Date(date).toLocaleDateString() as string;
-      await window.contract.addToVotesMap({ vote: data });
-      spinnerOff?.();
+      try {
+        spinnerOn?.();
+        data.id = uuidv4().slice(0, 7);
+        data.expirationDate = new Date(date).toLocaleDateString() as string;
+        await window.contract.addToVotesMap({ vote: data });
+        spinnerOff?.();
+        toast.success(
+          `You've created new vote ${data.voteTitle} ${data.voteName}`
+        );
+      } catch (err) {
+        spinnerOff?.();
+        console.log(err);
+        toast.error(
+          `You haven't created new vote ${data.voteTitle} - ${data.voteName}. Please try again!`
+        );
+      }
       formik.resetForm(); // doesn't work
-      toast.success(`You've created new vote ${data.voteTitle} ${data.voteName}`);
       navigate("/main");
     },
   });

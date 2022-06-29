@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useState, useContext } from "react";
 import { Box, Paper, Typography } from "@mui/material";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useParams } from "react-router";
 import {
   VoteWrapper,
@@ -39,51 +39,83 @@ export const VotePage: FunctionComponent = ({}) => {
     id: "",
   });
   const getVote = async () => {
-    const vote = await window.contract.getVote({ id: id });
-    setVote(vote);
-    spinnerOff?.();
+    try {
+      spinnerOn?.();
+      const vote = await window.contract.getVote({ id: id });
+      setVote(vote);
+      spinnerOff?.();
+    } catch (err) {
+      spinnerOff?.();
+      console.log(err);
+    }
   };
 
-  const checkVoted = async() => {
-    const vote = await window.contract.isUserVoted({id:id, accountId: window.accountId});
-    setIsVoted(vote);
-  }
+  const checkVoted = async () => {
+    try {
+      const vote = await window.contract.isUserVoted({
+        id: id,
+        accountId: window.accountId,
+      });
+      setIsVoted(vote);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    spinnerOn?.();
     getVote();
     checkVoted();
   }, [isVoted]);
 
-  const setForVote = async() => {
-    spinnerOn?.();
-    toast.success(`You've voted for ${voteName}`);
-    await window.contract.addForVote({id: id});
-    await window.contract.addToParticipation({id:id, accountId: window.accountId});
-    setIsVoted(true);
-    spinnerOff?.();
+  const setForVote = async () => {
+    try {
+      spinnerOn?.();
+      await window.contract.addForVote({ id: id });
+      await window.contract.addToParticipation({
+        id: id,
+        accountId: window.accountId,
+      });
+      toast.success(`You've voted for ${voteName}`);
+      setIsVoted(true);
+      spinnerOff?.();
+    } catch (err) {
+      spinnerOff?.();
+      console.log(err);
+      toast.error(`You haven't voted for ${voteName}. Try again!`);
+    }
   };
 
-  const setAgainst = async() => {
-    spinnerOn?.();
-    toast.error(`You've voted against ${voteName}`);
-    await window.contract.addToAgainst({id: id});
-    await window.contract.addToParticipation({id:id, accountId: window.accountId});
-    setIsVoted(true);
-    spinnerOff?.();
+  const setAgainst = async () => {
+    try {
+      spinnerOn?.();
+      await window.contract.addToAgainst({ id: id });
+      await window.contract.addToParticipation({
+        id: id,
+        accountId: window.accountId,
+      });
+      toast.error(`You've voted against ${voteName}`);
+      setIsVoted(true);
+      spinnerOff?.();
+    } catch (err) {
+      spinnerOff?.();
+      console.log(err);
+      toast.error(`You haven't voted against ${voteName}. Try again!`);
+    }
   };
   return (
-    <VoteWrapper >
+    <VoteWrapper>
       <Paper elevation={3} sx={{ width: "500px" }}>
         {spinner ? (
-          <Box             sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-            p: 1,
-          }}>
-            <Spinner/>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "center",
+              p: 1,
+            }}
+          >
+            <Spinner />
           </Box>
         ) : (
           <Box
@@ -109,18 +141,38 @@ export const VotePage: FunctionComponent = ({}) => {
               }}
             >
               <WrapperVoices>
-                <Box sx={{ textAlign: "center", fontWeight: 'bold' }} visibility={isVoted?'visible':'hidden'}>
+                <Box
+                  sx={{ textAlign: "center", fontWeight: "bold" }}
+                  visibility={isVoted ? "visible" : "hidden"}
+                >
                   For:{" "}
-                  <Typography sx={{ color: "green", fontWeight: 'bold' }}>{forVote}</Typography>
+                  <Typography sx={{ color: "green", fontWeight: "bold" }}>
+                    {forVote}
+                  </Typography>
                 </Box>
-                <Button sx={{display: !isVoted ? 'block': 'none'}} onClick={() => setForVote()}>For</Button>
+                <Button
+                  sx={{ display: !isVoted ? "block" : "none" }}
+                  onClick={() => setForVote()}
+                >
+                  For
+                </Button>
               </WrapperVoices>
               <WrapperVoices>
-                <Box sx={{ textAlign: "center", fontWeight: 'bold' }} visibility={isVoted?'visible':'hidden'}>
+                <Box
+                  sx={{ textAlign: "center", fontWeight: "bold" }}
+                  visibility={isVoted ? "visible" : "hidden"}
+                >
                   Against:{" "}
-                  <Typography sx={{ color: "red", fontWeight: 'bold' }}>{against}</Typography>
+                  <Typography sx={{ color: "red", fontWeight: "bold" }}>
+                    {against}
+                  </Typography>
                 </Box>
-                <Button sx={{display: !isVoted ? 'block': 'none'}} onClick={() => setAgainst()}>Against</Button>
+                <Button
+                  sx={{ display: !isVoted ? "block" : "none" }}
+                  onClick={() => setAgainst()}
+                >
+                  Against
+                </Button>
               </WrapperVoices>
             </Box>
             <Box sx={{ m: 2, textAlign: "justify" }}>{description}</Box>
