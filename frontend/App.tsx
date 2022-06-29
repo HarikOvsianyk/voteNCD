@@ -1,5 +1,4 @@
 import "regenerator-runtime/runtime";
-import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Layout } from "./layout";
 import "./assets/scss/global.scss";

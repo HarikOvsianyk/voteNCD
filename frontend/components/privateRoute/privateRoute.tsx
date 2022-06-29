@@ -1,14 +1,13 @@
-import { FunctionComponent } from 'react';
-import { Navigate } from 'react-router-dom';
+import { FunctionComponent } from "react";
+import { Navigate } from "react-router-dom";
+import { IPrivateRouteProps } from "../../interfaces/interfaces";
 
-interface IPrivateRouteProps {
-  component: FunctionComponent;
-}
-
-export const PrivateRoute: FunctionComponent<IPrivateRouteProps> = ({ component: Component }) => {
-  return (window.walletConnection.isSignedIn() ? (
-            <Component />
+export const PrivateRoute: FunctionComponent<IPrivateRouteProps> = ({
+  component: Component,
+}) => {
+  return window.walletConnection.isSignedIn() ? (
+    <Component />
   ) : (
-            <Navigate to='/' replace/>
-  ));
+    <Navigate to="/" replace />
+  );
 };

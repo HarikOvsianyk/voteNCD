@@ -1,10 +1,5 @@
-import React, { useState, useMemo } from "react";
-
-interface IContext {
-  spinner: boolean;
-  spinnerOn?: () => void;
-  spinnerOff?: () => void;
-}
+import React, { useState, ReactNode, FunctionComponent } from "react";
+import { IContext } from "../interfaces/interfaces";
 
 const defaultState = {
   spinner: false,
@@ -12,7 +7,7 @@ const defaultState = {
 
 export const Context = React.createContext<IContext>(defaultState);
 
-export const ContextProvider = (props) => {
+export const ContextProvider: FunctionComponent<{children: ReactNode}> = ({ children }) => {
   const [spinner, setSpinner] = useState(defaultState.spinner);
 
   const spinnerOn = () => {
@@ -29,7 +24,7 @@ export const ContextProvider = (props) => {
         spinnerOff,
       }}
     >
-      {props.children}
+      {children}
     </Context.Provider>
   );
 };

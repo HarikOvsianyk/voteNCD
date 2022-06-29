@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import { TVote } from "./types";
 
 export interface IVoteProps {
@@ -15,4 +16,14 @@ export interface IVoteFields {
   registerValue: TVote;
   type: string;
   label: string;
+}
+
+export interface IContext {
+  spinner: boolean;
+  spinnerOn?: () => void;
+  spinnerOff?: () => void;
+}
+
+export interface IPrivateRouteProps {
+  component: FunctionComponent;
 }
