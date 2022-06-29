@@ -73,7 +73,7 @@ export const VotePage: FunctionComponent = ({}) => {
     spinnerOff?.();
   };
   return (
-    <VoteWrapper>
+    <VoteWrapper >
       <Paper elevation={3} sx={{ width: "500px" }}>
         {spinner ? (
           <Box             sx={{

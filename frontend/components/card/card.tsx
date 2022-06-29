@@ -20,18 +20,25 @@ export const Card: FunctionComponent<IVoteProps> = ({
   against,
   id,
 }) => {
+  const date = new Date().toLocaleDateString();
   const navigate = useNavigate();
   return (
-    <BasicCard onClick={() => navigate(`/vote/${id}`)}>
+    <BasicCard
+      onClick={() => navigate(`/vote/${id}`)}
+      sx={{
+        opacity: date === expirationDate ? "0.3" : "",
+        pointerEvents: date === expirationDate ? "none" : "auto",
+      }}
+    >
       <CardContent
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          height: '350px'
+          height: "350px",
         }}
       >
-        <CardTitle sx={{flexGrow: 3}}>{voteTitle}</CardTitle>
+        <CardTitle sx={{ flexGrow: 3 }}>{voteTitle}</CardTitle>
         <CardIdTitle>Vote id: {id}</CardIdTitle>
         <CardName>{voteName}</CardName>
         <CardTitle>{author}</CardTitle>
