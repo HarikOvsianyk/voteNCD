@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useState, useContext } from "react";
 import { Box, Paper, Typography } from "@mui/material";
+import { toast } from 'react-toastify';
 import { useParams } from "react-router";
 import {
   VoteWrapper,
@@ -45,7 +46,6 @@ export const VotePage: FunctionComponent = ({}) => {
 
   const checkVoted = async() => {
     const vote = await window.contract.isUserVoted({id:id, accountId: window.accountId});
-    console.log(vote);
     setIsVoted(vote);
   }
 
@@ -53,18 +53,24 @@ export const VotePage: FunctionComponent = ({}) => {
     spinnerOn?.();
     getVote();
     checkVoted();
-  }, []);
+  }, [isVoted]);
 
   const setForVote = async() => {
+    spinnerOn?.();
+    toast.success(`You've voted for ${voteName}`);
     await window.contract.addForVote({id: id});
     await window.contract.addToParticipation({id:id, accountId: window.accountId});
-    console.log('Working');
+    setIsVoted(true);
+    spinnerOff?.();
   };
 
   const setAgainst = async() => {
+    spinnerOn?.();
+    toast.error(`You've voted against ${voteName}`);
     await window.contract.addToAgainst({id: id});
     await window.contract.addToParticipation({id:id, accountId: window.accountId});
-    console.log('Working');
+    setIsVoted(true);
+    spinnerOff?.();
   };
   return (
     <VoteWrapper>
