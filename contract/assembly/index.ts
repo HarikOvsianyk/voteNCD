@@ -19,7 +19,7 @@ export function isUserVoted(id: string, accountId: string): bool {
     let getArray = UserArray.getSome(id);
     return getArray.includes(accountId);
   } else {
-    logging.log("prompt not found");
+    logging.log("Vote not found");
     return false;
   }
 }
@@ -27,7 +27,7 @@ export function isUserVoted(id: string, accountId: string): bool {
 //Change methods
 
 export function addToVotesMap(vote: IVoteProps): void {
-  logging.log("Added to prompt array");
+  logging.log("Added to votes array");
   VotesMAP.set(vote.id, vote);
 }
 
