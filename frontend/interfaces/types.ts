@@ -1,1 +1,1 @@
-export type TLaw = 'lawTitle' | 'author' | 'lawName' | 'description' | 'date';
+export type TVote = 'voteTitle' | 'author' | 'voteName' | 'description' | 'expirationDate' | 'forVote' | 'against';
