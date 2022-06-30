@@ -11,7 +11,7 @@ To run this project locally:
 
 1. Prerequisites: Make sure you've installed [Node.js] ≥ 12
 2. Install dependencies: `yarn install`
-3. Run the local development server: `yarn run dev` (see `package.json` for a
+3. Run the local development server: `yarn dev` (see `package.json` for a
    full list of `scripts` you can run with `yarn`)
 
 Now you'll have a local development environment backed by the NEAR TestNet!
@@ -36,7 +36,7 @@ Exploring The Code
 Deploy
 ======
 
-Every smart contract in NEAR has its [own associated account][NEAR accounts]. When you run `yarn run dev`, your smart contract gets deployed to the live NEAR TestNet with a throwaway account. When you're ready to make it permanent, here's how.
+Every smart contract in NEAR has its [own associated account][NEAR accounts]. When you run `yarn dev`, your smart contract gets deployed to the live NEAR TestNet with a throwaway account. When you're ready to make it permanent, here's how.
 
 
 Step 0: Install near-cli (optional)
@@ -78,7 +78,7 @@ Step 3: deploy!
 
 One command:
 
-    yarn run deploy
+    yarn deploy
 
 As you can see in `package.json`, this does two things:
 
