@@ -1,0 +1,1 @@
+export { schemaNewLaw } from './schemaValidation';

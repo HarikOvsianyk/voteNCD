@@ -1,12 +1,64 @@
-import { FunctionComponent } from 'react';
-import { Card } from '../../components/card';
-import './main.scss';
+import { FunctionComponent } from "react";
+import { Box } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
+import { Card, Button } from "../../components";
+
+const laws = [
+  {
+    lawTitle: "Criminal",
+    lawName: "Against Russian Invasion",
+    author: 'Harik Ovsianyk',
+    expirationDate: "2022-09-09",
+    forVote: "202200",
+    against: "202200",
+    id: 1
+  },
+  {
+    lawTitle: "Civil",
+    lawName: "Change retirement age",
+    author: 'Harik Ovsianyk',
+    expirationDate: "2022-10-10",
+    forVote: "202200",
+    against: "202200", 
+    id: 2
+  },
+  {
+    lawTitle: "Civil",
+    lawName: "Change retirement age1",
+    author: 'Harik Ovsianyk',
+    expirationDate: "2022-10-10",
+    forVote: "202200",
+    against: "202200", 
+    id: 2
+  },
+  {
+    lawTitle: "Civil",
+    lawName: "Change retirement age2",
+    author: 'Harik Ovsianyk',
+    expirationDate: "2022-10-10",
+    forVote: "202200",
+    against: "202200", 
+    id: 2
+  }
+];
 
 export const Main: FunctionComponent = () => {
-    return (
-        <div className='main'>
-        <Card lawTitle='Criminal' lawName='Against Russian Invasion' expirationDate='2022-09-09' inFavor='202200' against='1020'/>
-        <Card lawTitle='Civil' lawName='Change retirement age' expirationDate='2022-10-10' inFavor='202200' against='1020'/>
-        </div>
-    )
-}
+  const navigate = useNavigate();
+  return (
+    <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', alignItems: 'flex-start', p:2, width: '70vw' }}>
+      {laws.map(({ lawName, lawTitle, author, expirationDate, forVote , against, id  }) => (
+          <Card 
+          key={lawName}
+          lawTitle={lawTitle}
+          author={author}
+          lawName={lawName}
+          expirationDate={expirationDate}
+          forVote={forVote}
+          against={against}
+          id={id}
+          />
+      ))}
+      <Button onClick={() => navigate('/new')}>Add new vote</Button>
+    </Box>
+  );
+};
