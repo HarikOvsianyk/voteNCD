@@ -1,24 +1,29 @@
-import { TLaw } from "./types";
+import { FunctionComponent } from "react";
+import { TVote } from "./types";
 
-export interface IBaseProps {
-  lawTitle: string;
+export interface IVoteProps {
+  voteTitle: string;
   author: string;
-  lawName: string;
-}
-
-export interface ILawProps extends IBaseProps {
-  description: string;
-}
-
-export interface ICardProps extends IBaseProps {
+  voteName: string;
   expirationDate: string;
-  forVote: string;
-  against: string;
-  id: string | number;
+  forVote: number;
+  against: number;
+  description: string;
+  id: string;
 }
 
-export interface ILawFields {
-  registerValue: TLaw;
+export interface IVoteFields {
+  registerValue: TVote;
   type: string;
   label: string;
+}
+
+export interface IContext {
+  spinner: boolean;
+  spinnerOn?: () => void;
+  spinnerOff?: () => void;
+}
+
+export interface IPrivateRouteProps {
+  component: FunctionComponent;
 }

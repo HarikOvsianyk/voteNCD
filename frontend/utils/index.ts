@@ -1,1 +1,1 @@
-export { schemaNewLaw } from './schemaValidation';
+export { schemaNewVote } from './schemaValidation';

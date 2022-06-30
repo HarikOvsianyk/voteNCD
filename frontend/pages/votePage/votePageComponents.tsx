@@ -2,23 +2,26 @@ import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { colors } from "../../constants/colors";
 
-export const LawWrapper = styled(Box)({
+export const VoteWrapper = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center'
 });
 
-export const LawTitle = styled(Typography)({
+export const VoteTitle = styled(Typography)({
+  textAlign:'center',
   fontSize: "20px",
 });
 
-export const LawName = styled(Typography)({
+export const VoteName = styled(Typography)({
+  textAlign:'center',
   color: colors.main,
   fontSize: "30px",
 });
 
-export const LawExpDate = styled(Typography)({
+export const VoteExpDate = styled(Typography)({
   margin: "15px",
+  fontStyle: 'italic',
 });
 
 export const WrapperVoices = styled(Box)({

@@ -1,4 +1,4 @@
-import { Main, SignIn, LawPage, Error, NewLaw } from '../pages';
+import { Main, SignIn, VotePage, Error, NewVote } from '../pages';
   import { PrivateRoute } from '../components';
   
   export const PAGES = [
@@ -13,9 +13,9 @@ import { Main, SignIn, LawPage, Error, NewLaw } from '../pages';
       element: <PrivateRoute component={Main}/>,
     },
     {
-      label: 'Law Page',
-      path: '/law/:id',
-      element: <PrivateRoute component={LawPage}/>,
+      label: 'Vote Page',
+      path: '/vote/:id',
+      element: <PrivateRoute component={VotePage}/>,
     },
     {
       label: 'Error',
@@ -23,9 +23,9 @@ import { Main, SignIn, LawPage, Error, NewLaw } from '../pages';
       element: <Error />,
     },
     {
-      label: 'NewLaw',
-      path: '/new',
-      element: <PrivateRoute component={NewLaw}/>,
+      label: 'NewVote',
+      path: '/newvote',
+      element: <PrivateRoute component={NewVote}/>,
     },
   ];
   
