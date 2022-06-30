@@ -10,7 +10,7 @@
     "start": "yarn run deploy && echo The app is starting! It will automatically open in your browser when ready && env-cmd -f ./neardev/dev-account.env parcel frontend/index.html --open",
     "dev": "nodemon --watch contract -e ts --exec \"yarn run start\"",
     "test": "yarn run build:contract && yarn run test:unit && yarn run test:integration",
-    "test:unit": "cd contract && yarn i && yarn run test",
+    "test:unit": "cd contract && yarn install && yarn run test",
     "test:integration": "yarn run test:integration:ts && yarn run test:integration:rs",
     "test:integration:ts": "cd integration-tests/ts && yarn run test",
     "test:integration:rs": "cd integration-tests/rs && cargo run --example integration-tests"
