@@ -32,44 +32,52 @@ export const Main: FunctionComponent = () => {
           <Spinner />
         </Box>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            alignItems: "stretch",
-            alignSelf: "flex-start",
-            p: 2,
-            width: "70vw",
-          }}
-        >
-          {votes.map(
-            ({
-              voteName,
-              voteTitle,
-              author,
-              expirationDate,
-              forVote,
-              against,
-              id,
-              description,
-            }) => (
-              <Card
-                key={id}
-                voteTitle={voteTitle}
-                author={author}
-                voteName={voteName}
-                expirationDate={expirationDate}
-                forVote={forVote}
-                against={against}
-                id={id}
-                description={description}
-              />
-            )
-          )}
-          <Button onClick={() => navigate("/newvote")} sx={{ height: "35px" }}>
-            Add new vote
-          </Button>
+        <Box sx={{display: 'flex', flexDirection: 'row'}}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: 'center',
+              flexWrap: "wrap",
+              alignItems: "stretch",
+              alignSelf: "flex-start",
+              p: 2,
+              width: "70vw",
+            }}
+          >
+            {votes.map(
+              ({
+                voteName,
+                voteTitle,
+                author,
+                expirationDate,
+                forVote,
+                against,
+                id,
+                description,
+              }) => (
+                <Card
+                  key={id}
+                  voteTitle={voteTitle}
+                  author={author}
+                  voteName={voteName}
+                  expirationDate={expirationDate}
+                  forVote={forVote}
+                  against={against}
+                  id={id}
+                  description={description}
+                />
+              )
+            )}
+          </Box>
+          <Box>
+            <Button
+              onClick={() => navigate("/newvote")}
+              sx={{ height: "35px", margin: "16px" }}
+            >
+              Add new vote
+            </Button>
+          </Box>
         </Box>
       )}
     </>
