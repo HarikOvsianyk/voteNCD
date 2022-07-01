@@ -8,6 +8,7 @@ import {
   VoteName,
   VoteExpDate,
   WrapperVoices,
+  VotedDescr
 } from "./votePageComponents";
 import { Button, Spinner } from "../../components";
 import { IVoteProps } from "../../interfaces/interfaces";
@@ -122,12 +123,16 @@ export const VotePage: FunctionComponent = ({}) => {
             key={id}
             sx={{
               display: "flex",
+              position:"relative",
               flexDirection: "column",
               justifyContent: "space-between",
               alignItems: "center",
               p: 1,
             }}
           >
+            {isVoted ? (
+              <VotedDescr>voted!</VotedDescr>
+            ): ''}
             <VoteTitle>{voteTitle}</VoteTitle>
             <VoteName>{voteName}</VoteName>
             <VoteTitle>{author}</VoteTitle>

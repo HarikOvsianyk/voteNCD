@@ -24,6 +24,17 @@ export const VoteExpDate = styled(Typography)({
   fontStyle: 'italic',
 });
 
+export const VotedDescr = styled(Typography)({
+  backgroundColor: colors.main,
+  color: colors.white,
+  borderRadius: '5px',
+  position:'absolute',
+  top: '0',
+  right: '0',
+  padding: '3px',
+  margin: '3px',
+})
+
 export const WrapperVoices = styled(Box)({
   width: '45%',
   display: "flex",
