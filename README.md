@@ -1,4 +1,4 @@
-near-blank-project
+vote! Democracy in the blockchain
 ==================
 
 This [React] app was initialized with [create-near-app]
