@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useState, useContext } from "react";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import moment from 'moment';
 import { toast } from "react-toastify";
 import { Card, Button, Spinner } from "../../components";
 import { Context } from "../../context/context";
@@ -45,7 +46,7 @@ export const Main: FunctionComponent = () => {
               width: "70vw",
             }}
           >
-            {votes.map(
+            {votes.sort((a,b) => Number(moment(b.expirationDate)) - Number(moment(a.expirationDate))).map(
               ({
                 voteName,
                 voteTitle,

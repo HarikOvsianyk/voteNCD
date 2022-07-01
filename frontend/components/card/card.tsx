@@ -1,5 +1,6 @@
 import { FunctionComponent, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import moment from 'moment';
 import { CardContent } from "@mui/material";
 import {
   BasicCard,
@@ -22,6 +23,7 @@ export const Card: FunctionComponent<IVoteProps> = ({
 }) => {
   const [isVoted, setIsVoted] = useState(false);
   const date = new Date().toLocaleDateString();
+  const dateChecking = moment(date).isAfter(expirationDate);
   const navigate = useNavigate();
 
   const checkVoted = async () => {
@@ -44,8 +46,8 @@ export const Card: FunctionComponent<IVoteProps> = ({
     <BasicCard
       onClick={() => navigate(`/vote/${id}`)}
       sx={{
-        opacity: date === expirationDate ? "0.3" : "",
-        pointerEvents: date === expirationDate ? "none" : "auto",
+        opacity: ((date === expirationDate) || dateChecking) ? "0.3" : "",
+        pointerEvents: ((date === expirationDate) || dateChecking) ? "none" : "auto",
       }}
     >
       <CardContent

@@ -16,6 +16,6 @@ import {
   });
 
   export const FormField = styled(TextField)(({ theme }) => ({
-    height: '75px',
+    height: '80px',
     width: '45%'
   }));
