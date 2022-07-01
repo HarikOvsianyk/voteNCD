@@ -50,7 +50,6 @@ export const NewVote: FunctionComponent = () => {
           `You haven't created new vote ${data.voteTitle} - ${data.voteName}. Please try again!`
         );
       }
-      formik.resetForm(); // doesn't work
       navigate("/main");
     },
   });
